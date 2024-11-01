@@ -3,8 +3,10 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/joho/godotenv"
 )
 
 type Todo struct {
@@ -14,13 +16,20 @@ type Todo struct {
 }
 
 
-const PORT string = ":3000"
+
 func main(){
-	fmt.Printf("Server is running on port%s",PORT)
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	PORT := os.Getenv("PORT")
+
+
 	app := fiber.New()
 
 	todos := []Todo{}
-
+	fmt.Printf("Server is running on port%s",PORT)
 	// Get Todo Endpoint
 	app.Get("/api/todos",func(c *fiber.Ctx) error{
 		return c.Status(200).JSON(todos)
@@ -72,5 +81,5 @@ func main(){
 		
 	})
 
-	log.Fatal(app.Listen(PORT))
+	log.Fatal(app.Listen(":"+PORT))
 }
