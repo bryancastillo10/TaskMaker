@@ -1,20 +1,16 @@
 import { extendTheme } from "@chakra-ui/react";
-
+import { colors, fonts, fontWeights } from "./styles";
 const config = {
   initialColorMode: "light", 
   useSystemColorMode: false, 
 };
 
-const colors = {
-  brand: {
-    100: "#0072b2", 
-    900: "#1a202c", 
-  },
-};
 
 const theme = extendTheme({
   config,
   colors,
+  fonts,
+  fontWeights,
   styles: {
     global: (props: { colorMode: string; }) => ({
       body: {

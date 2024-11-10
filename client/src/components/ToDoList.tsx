@@ -1,8 +1,8 @@
-import { VStack } from "@chakra-ui/react";
+import { VStack, Heading } from "@chakra-ui/react";
 const ToDoList = () => {
   return (
-      <VStack bg="cyan.800" h="250px">
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio, cum.</p>
+      <VStack  h="250px">
+         <Heading variant="h2">List of Tasks</Heading>
     </VStack>
   )
 }
