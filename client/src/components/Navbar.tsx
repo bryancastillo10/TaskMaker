@@ -17,7 +17,8 @@ const Navbar = () => {
           </Flex>
           <Flex gap="2" align="center">
             <Button onClick={toggleColorMode} colorScheme="teal">
-              {colorMode === "light" ? <BiMoon/> : <BiSun/>}
+              {colorMode === "light" ? <BiMoon/>
+               : <BiSun/>}
             </Button>
           </Flex>
         </Flex>

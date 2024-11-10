@@ -1,7 +1,8 @@
 import { BiCheckCircle, BiTrash } from "react-icons/bi";
 import { Flex,  Text, Badge,IconButton } from "@chakra-ui/react";
+import { TodoType } from "../api/api";
 
-const ToDoItem = () => {
+const ToDoItem = ({todos}:{todos:TodoType}) => {
     return (
       <Flex justify="space-between" align="center" w={{base:"26rem",sm:"20rem", md:"32rem" }} gap="4" px={{base:"4",md:"6"}}>
         <Flex
@@ -17,9 +18,9 @@ const ToDoItem = () => {
           gap="12"
         >
           <Text fontSize="14px">
-            Walk the Dog
+            {todos.body}
           </Text>
-          <Badge variant="subtle">Done</Badge>
+          <Badge variant="subtle">{todos.completed ? "Done": "In Progress"}</Badge>
         </Flex>
         <IconButton
           colorScheme="teal"
