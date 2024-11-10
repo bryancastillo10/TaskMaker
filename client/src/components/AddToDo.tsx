@@ -1,13 +1,22 @@
-import { VStack, Text } from "@chakra-ui/react";
-import { useColorModeValue } from "./ui/color-mode";
+import { Stack, Flex, Input, IconButton, useColorMode } from "@chakra-ui/react";
+import { CgAdd } from "react-icons/cg";
 
 const AddToDo = () => {
+  const { colorMode } = useColorMode();
   return (
-    <VStack h="100px" bg={useColorModeValue("gray.400", "gray.700")}>
-      <Text color={useColorModeValue("black", "white")}>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, iure?
-      </Text>
-    </VStack>
+    <Stack>
+      <Flex p="2" gap="2">
+        <Input
+          color={colorMode=== "dark" ?"white":"black"}
+          placeholder="Add some Task Here"
+          focusBorderColor="brand.100"
+          _placeholder={{ opacity: 1, color: "gray.400" }}
+        />
+        <IconButton colorScheme="teal" aria-label="add-todo" >
+          <CgAdd />
+        </IconButton>
+      </Flex>
+    </Stack>
   );
 };
 
