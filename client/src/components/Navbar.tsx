@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <Container maxW="full" p="0">
       <Box bg="brand.100">
-        <Flex h={16} justify="space-between" align="center" px={{sm:"6" ,md:"20"}}>
+        <Flex h={16} justify="space-between" align="center" px={{base:"6" ,md:"20"}}>
           <Flex alignItems="center" gap="2">
             <img src={Gopher} alt="go-lang" width={28} height={32} />
             <Heading fontWeight="semibold" size="">

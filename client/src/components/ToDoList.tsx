@@ -18,7 +18,6 @@ const ToDoList = () => {
       </Flex>)}
       <Flex>
         <VStack alignItems="center" gap="3" px="8">
-          <Text>Completed Tasks</Text>
           <ToDoItem/>
         </VStack>
       </Flex>

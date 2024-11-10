@@ -3,7 +3,7 @@ import { Flex,  Text, Badge,IconButton } from "@chakra-ui/react";
 
 const ToDoItem = () => {
     return (
-      <Flex justify="space-between" align="center" w={{base:"26rem",sm:"20rem", md:"32rem" }} gap="4">
+      <Flex justify="space-between" align="center" w={{base:"26rem",sm:"20rem", md:"32rem" }} gap="4" px={{base:"4",md:"6"}}>
         <Flex
           flex="1"
           w="fit"
