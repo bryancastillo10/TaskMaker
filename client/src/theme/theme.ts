@@ -12,10 +12,10 @@ const theme = extendTheme({
   fonts,
   fontWeights,
   styles: {
-    global: (props: { colorMode: string; }) => ({
+    global: (props: { colorMode: string }) => ({
       body: {
         bg: props.colorMode === "dark" ? "blue.800" : "blue.100",
-        color: props.colorMode === "dark" ? "black" : "white",
+        color: props.colorMode === "dark" ? "#FEF2EA" : "#E1E8FB",
       },
     }),
   },

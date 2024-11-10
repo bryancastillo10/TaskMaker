@@ -7,12 +7,14 @@ const AddToDo = () => {
     <Stack>
       <Flex p="2" gap="2">
         <Input
-          color={colorMode=== "dark" ?"white":"black"}
+          color={colorMode === "dark" ? "white" : "black"}
           placeholder="Add some Task Here"
+          borderColor="#111000"
           focusBorderColor="brand.100"
+          errorBorderColor="crimson"
           _placeholder={{ opacity: 1, color: "gray.400" }}
         />
-        <IconButton colorScheme="teal" aria-label="add-todo" >
+        <IconButton colorScheme="teal" aria-label="add-todo">
           <CgAdd />
         </IconButton>
       </Flex>
