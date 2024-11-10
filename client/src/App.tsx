@@ -1,17 +1,17 @@
-import {  Stack, Container } from "@chakra-ui/react";
+import { VStack, Container } from "@chakra-ui/react";
 import Navbar from "./components/Navbar";
 import AddToDo from "./components/AddToDo";
 import ToDoList from "./components/ToDoList";
 
 const App = () => {
   return (
-    <Stack  gap="0"  justifyContent="center">
+    <VStack>
       <Navbar />
-      <Container w="full">
+      <Container>
         <AddToDo />
         <ToDoList/>
       </Container>
-    </Stack>
+    </VStack>
   );
 };
 

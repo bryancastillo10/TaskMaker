@@ -1,4 +1,5 @@
 import { VStack, Text, Flex, Spinner } from "@chakra-ui/react";
+import ToDoItem from "./ToDoItem";
 const ToDoList = () => {
   const isLoading = false;
   return (
@@ -16,8 +17,9 @@ const ToDoList = () => {
         />
       </Flex>)}
       <Flex>
-        <VStack alignItems="center" gap="3">
+        <VStack alignItems="center" gap="3" px="8">
           <Text>Completed Tasks</Text>
+          <ToDoItem/>
         </VStack>
       </Flex>
     </VStack>
