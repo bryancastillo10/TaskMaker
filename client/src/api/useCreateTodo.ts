@@ -1,16 +1,11 @@
-import { BASE_URL} from "./api"
+import { BASE_URL, baseToastConfig} from "./api"
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useToast, UseToastOptions } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 
 const useCreateTodo = () => {
     const queryClient = useQueryClient();
     const toast = useToast();
 
-     const baseToastConfig: UseToastOptions = {
-       duration: 5000,
-       isClosable: true,
-       position: "top",
-     };
 
 
     const { mutate: createTodo, isPending: isCreateLoading } = useMutation({
