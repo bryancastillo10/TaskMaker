@@ -8,6 +8,11 @@ export type TodoType = {
     completed: boolean;
 }
 
+export interface ApiError {
+  message: string;
+  error?: string;
+}
+
 export const baseToastConfig: UseToastOptions = {
        duration: 5000,
        isClosable: true,

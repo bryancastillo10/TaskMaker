@@ -2,9 +2,11 @@ import { BiCheckCircle, BiTrash } from "react-icons/bi";
 import { Flex,  Text,Spinner, Badge,IconButton } from "@chakra-ui/react";
 import { TodoType } from "../api/api";
 import useDeleteTodo from "../api/useDeleteTodo";
+import useUpdateTodo from '../api/useUpdateTodo';
 
 const ToDoItem = ({ todos }: { todos: TodoType }) => {
   const { deleteToDo, isDeleteLoading } = useDeleteTodo();
+  const { updateTodo, isUpdateLoading } = useUpdateTodo();
 
     return (
       <Flex justify="space-between" align="center" gap="4" px={{base:"4",md:"6"}}>
@@ -19,15 +21,18 @@ const ToDoItem = ({ todos }: { todos: TodoType }) => {
           borderRadius="lg"
           gap="12"
         >
-          <Text fontSize="14px">
+          <Text textDecoration={todos.completed ? "line-through": "none"} fontSize="14px">
             {todos.body}
           </Text>
-          <Badge variant="subtle">{todos.completed ? "Done": "In Progress"}</Badge>
+          <Badge variant="subtle" colorScheme={todos.completed ? "green":"yellow"}>
+            {todos.completed ? "Done" : "In Progress"}
+          </Badge>
         </Flex>
         <IconButton
+          onClick={()=> updateTodo(todos._id)}
           colorScheme="teal"
-          aria-label="Done"
-          icon={<BiCheckCircle />}
+          aria-label="Update"
+          icon={isUpdateLoading ? <Spinner size="sm"/>:<BiCheckCircle />}
           borderRadius="full"
         />
         <IconButton

@@ -119,8 +119,19 @@ func updateTodo (c *fiber.Ctx) error {
 		return c.Status(400).JSON(fiber.Map{"error":"Invalid todo ID"})
 	}
 
+	var todo bson.M
 	filter := bson.M{"_id":objectID}
-	update := bson.M{"$set":bson.M{"completed":true}}
+	err = collection.FindOne(context.Background(), filter).Decode(&todo)
+	if err != nil {
+		return c.Status(404).JSON(fiber.Map{"error":"Todo item not found"})
+	}
+
+	completed, ok := todo["completed"].(bool)
+	if !ok{
+		return c.Status(500).JSON(fiber.Map{"error":"Invalied 'completed' field type"})
+	}
+
+	update := bson.M{"$set": bson.M{"completed":!completed}}
 
 	_, err = collection.UpdateOne(context.Background(),filter,update)
 	if err != nil {

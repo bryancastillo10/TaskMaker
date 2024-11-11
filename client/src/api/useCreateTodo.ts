@@ -1,4 +1,4 @@
-import { BASE_URL, baseToastConfig} from "./api"
+import { ApiError, BASE_URL, baseToastConfig} from "./api"
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@chakra-ui/react";
 
@@ -37,7 +37,7 @@ const useCreateTodo = () => {
               status:"success"
             })
       },
-      onError: (error: any) => {
+      onError: (error: Error | ApiError) => {
             toast({
                 ...baseToastConfig,
                 title: "Failed to Create Task",
