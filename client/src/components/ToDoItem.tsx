@@ -4,10 +4,9 @@ import { TodoType } from "../api/api";
 
 const ToDoItem = ({todos}:{todos:TodoType}) => {
     return (
-      <Flex justify="space-between" align="center" w={{base:"26rem",sm:"20rem", md:"32rem" }} gap="4" px={{base:"4",md:"6"}}>
+      <Flex justify="space-between" align="center" gap="4" px={{base:"4",md:"6"}}>
         <Flex
-          flex="1"
-          w="fit"
+          flex="1"   
           py="3"
           px="4"
           border="1px"
