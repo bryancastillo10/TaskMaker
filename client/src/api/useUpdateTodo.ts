@@ -1,16 +1,16 @@
-import { ApiError, BASE_URL, baseToastConfig } from "./api";
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { ApiError, BASE_URL, baseToastConfig } from "./api"
 import { useToast } from "@chakra-ui/react";
-const useDeleteTodo = () => {
+const useUpdateTodo = () => {
     const queryClient = useQueryClient();
     const toast = useToast();
 
-    const { mutate: deleteToDo, isPending: isDeleteLoading } = useMutation({
-        mutationKey: ["deleteTodo"],
+    const { mutate: updateTodo, isPending: isUpdateLoading } = useMutation({
+        mutationKey: ["updateTodo"],
         mutationFn: async (id: number) => {
             try {
                 const res = await fetch(`${BASE_URL}/todos/${id}`, {
-                    method: "DELETE",
+                    method: "PATCH",
                 });
                 const data = await res.json();
                 if (!res.ok) {
@@ -18,28 +18,28 @@ const useDeleteTodo = () => {
                 }
                 return data;
             } catch (error) {
-                console.error("Failed to delete the data", error);
+                console.error("Failed to update the data", error);
             }
-        }, 
+        },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["todos"] });
             toast({
                 ...baseToastConfig,
-                title: "Deleted Task",
-                description: "Your Task has been deleted",
-                status:"success"
+                title: "Updated Task",
+                description: "Your task has been updated",
+                status: "success"
             })
         },
         onError: (error: Error | ApiError) => {
             toast({
-              ...baseToastConfig,
-              title: "Failed to Delete Task",
-              description: error.message || "Failed to delete the task",
-              status: "error",
+                ...baseToastConfig,
+                title: "Failed to Update the task",
+                description: error.message || "Failed to update the task",
+                status: "error"
             });
         }
     });
-    return {deleteToDo, isDeleteLoading}
+    return { updateTodo, isUpdateLoading };
 }
 
-export default useDeleteTodo;
+export default useUpdateTodo
