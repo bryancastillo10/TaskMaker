@@ -1,13 +1,15 @@
 import { BiCheckCircle, BiTrash } from "react-icons/bi";
-import { Flex,  Text, Badge,IconButton } from "@chakra-ui/react";
+import { Flex,  Text,Spinner, Badge,IconButton } from "@chakra-ui/react";
 import { TodoType } from "../api/api";
+import useDeleteTodo from "../api/useDeleteTodo";
 
-const ToDoItem = ({todos}:{todos:TodoType}) => {
+const ToDoItem = ({ todos }: { todos: TodoType }) => {
+  const { deleteToDo, isDeleteLoading } = useDeleteTodo();
+
     return (
-      <Flex justify="space-between" align="center" w={{base:"26rem",sm:"20rem", md:"32rem" }} gap="4" px={{base:"4",md:"6"}}>
+      <Flex justify="space-between" align="center" gap="4" px={{base:"4",md:"6"}}>
         <Flex
-          flex="1"
-          w="fit"
+          flex="1"   
           py="3"
           px="4"
           border="1px"
@@ -29,9 +31,10 @@ const ToDoItem = ({todos}:{todos:TodoType}) => {
           borderRadius="full"
         />
         <IconButton
+          onClick={()=>deleteToDo(todos._id)}
           colorScheme="red"
           aria-label="Delete"
-          icon={<BiTrash />}
+          icon={ isDeleteLoading ? <Spinner size="sm" /> : <BiTrash />}
           borderRadius="full"
         />
       </Flex>
